@@ -10,7 +10,7 @@ class Character:
    #! Funcion atacar
     def attack(self, enemy):
         damage = max(self.strength - enemy.defense, 0)
-       # TODO enemy.take_damage(damage)
+        enemy.take_damage(damage)
         print(f"{self.name} atacó a {enemy.name} causando {damage} puntos de daño.")
 
     #! Funcion recibir daño, considerando defensa
@@ -40,7 +40,7 @@ class Character:
         print(f"{self.name} subió al nivel {self.level}!")
 
 class Warrior(Character):
-    #! Habilidad especial del guerrero: ataque con aumento de daño
+    #! Habilidad especial del luchador: ataque con aumento de daño
     def special_ability(self, enemy):
         damage = max(self.strength * 2.5 - enemy.defense, 0)
        # TODO enemy.FUNCION TOMAR DAÑO DE LOS ENEMIGOS(damage)
@@ -51,7 +51,7 @@ class Mage(Character):
     def cast_spell(self, enemy):
         damage = max(self.strength * 1.8 - enemy.defense * 0.5, 0)
        # TODO enemy.take_damage(damage)
-        print(f"{self.name} lanza un hechizo poderoso y causa {damage} puntos de daño a {enemy.name}.")
+        print(f"{self.name} lanzó un hechizo crítico y causó {damage} puntos de daño a {enemy.name}.")
 
 class Archer(Character):
     #! Habilidad especial del arquero: ataque a distancia con posibilidad de golpe crítico
@@ -60,5 +60,5 @@ class Archer(Character):
         damage = max(self.strength * 1.3 * critical_hit - enemy.defense, 0)
         # TODO enemy.take_damage(damage)
         if critical_hit > 1:
-            print(f"¡{self.name} realiza un golpe crítico!")
-        print(f"{self.name} dispara una flecha causando {damage} puntos de daño a {enemy.name}.")
+            print(f"¡{self.name} realizó un golpe crítico!")
+        print(f"{self.name} disparó una flecha causando {damage} puntos de daño a {enemy.name}.")
