@@ -32,6 +32,8 @@ class AncientDragon(Character):
 
             # Llama a la función de recompensa al derrotarlo
             self.award_treasure()
+        
+#TODO 
 
     #! Función para otorgar una recompensa al jugador
     def award_treasure(self):

@@ -28,9 +28,4 @@ class UndeadKnight(Character):
         self.health = max(self.health * 0.5, 50)  # Resucita con el 50% de la salud o un mínimo de 50 puntos
         print(f"{self.name} ha resucitado con {self.health} puntos de salud.")
 
-        #ogre
-        class Ogre(Character):
-            def __init__(self, name, strength, defense, health):
-                super().__init__(name, strength, defense, health)
-                self.angry = False  # Indica si ya está enojado
-                
+    

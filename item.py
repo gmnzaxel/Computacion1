@@ -43,15 +43,16 @@ class ShieldItem(Item):
     def apply(self, target):
         target.shield += self.shield_amount
         print(f"{target.name} ha ganado {self.shield_amount} puntos de escudo.")
-#instaa kill 
-class DeathItem(Item):
-    def __init__(self, name):
-        super().__init__(name, "Causa muerte instantánea")
+##instaa kill 
+# class DeathItem(Item):
+#     def __init__(self, name):
+#         super().__init__(name, "Causa muerte instantánea")
 
-    def apply(self, target):
-        target.health = 0
-        print(f"{target.name} ha sido eliminado instantáneamente.")
+#     def apply(self, target):
+#         target.health = 0
+#         print(f"{target.name} ha sido eliminado instantáneamente.")
 
+#TODO instaa kill pero al enemigo
 
 
 #! EJEMPLO DE USO SEGUN GPT
