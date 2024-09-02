@@ -5,7 +5,7 @@ class Dungeon:
 
 class Enemy:
     def _init_(self, name, health, strength, defense):
-        self.name = name
-        self.health = health
-        self.strength = strength
-        self.defense = defense
+        self.__name = name
+        self.__health = health
+        self.__strength = strength
+        self.__defense = defense
