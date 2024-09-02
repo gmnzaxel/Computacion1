@@ -1,9 +1,7 @@
-# from characters import Warrior, Mage, Archer
-# from dungeon 
 # from generator
 # from narratives
-from characters import Warrior  # Importa tu clase de personaje
-from dungeon import Dungeon  # Importa tu clase de mazmorras
+from characters import Warrior, Mage, Archer
+from dungeon import Dungeon  
 import save # Importa el sistema de guardado
 
 def game_menu(player, dungeon):
@@ -16,11 +14,11 @@ def game_menu(player, dungeon):
         option = input("Elige una opción: ")
 
         if option == '1':
-            player.attack(dungeon.current_enemy)
+            player.__attack(dungeon.__current_enemy)
         elif option == '2':
-            player.defend(dungeon.current_enemy)
+            player.__defend(dungeon.__current_enemy)
         elif option == '3':
-            print(f"{player.name} decidió irse.")
+            print(f"{player.__name} decidió irse.")
             break
         elif option == '4':
             save_menu(player)
@@ -36,9 +34,9 @@ def save_menu(player):
         option = input("Elige una opción: ")
 
         if option == '1':
-            save.save_game(player)
+            save.__save_game(player)
         elif option == '2':
-            save.load_game(player)
+            save.__load_game(player)
         elif option == '3':
             break
         else:
@@ -46,12 +44,12 @@ def save_menu(player):
 
 def main():
     player = Warrior("Conan", 100, 20, 10)
-    dungeon = Dungeon()  # Supongamos que tienes una mazmorra preparada
+    dungeon = Dungeon()  
 
     print("¡Bienvenido al juego!")
     game_menu(player, dungeon)
 
-# if _name_ == "_main_":
-#     main()
+if _name_ == "_main_":
+    main()
 
-#############################
+
