@@ -6,12 +6,13 @@ class Character:
         self.__defense = defense
         self.__level = level
         self.__experience = experience
-
+    def get_name(self):
+        return self.__name
    #! Funcion atacar
     def attack(self, enemy):
         damage = max(self.__strength - enemy.__defense, 0)
-        enemy.__take_damage(damage)
-        print(f"{self.__name} atacó a {enemy.__name} causando {damage} puntos de daño.")
+        enemy.take_damage(damage)
+        print(f"{self.get_name()} atacó a {enemy.get_name()} causando {damage} puntos de daño.")
 
     #! Funcion recibir daño, considerando defensa
     def take_damage(self, damage):
