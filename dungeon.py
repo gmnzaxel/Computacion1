@@ -1,6 +1,6 @@
 class Dungeon:
     def _init_(self):
-        # Aquí creas a los enemigos y defines cuál es el enemigo actual
+        # Acá creas a los enemigos y definís cuál es el enemigo actual
         self.current_enemy = Enemy("Goblin", 50, 15, 5)
 
 class Enemy:
