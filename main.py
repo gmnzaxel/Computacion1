@@ -1,55 +1,72 @@
-# from generator
-# from narratives
-from characters import Warrior, Mage, Archer
-from dungeon import Dungeon  
-import save # Importa el sistema de guardado
-
-def game_menu(player, dungeon):
-    while True:
-        print("\n--- Menú Principal ---")
-        print("1. Atacar")
-        print("2. Defenderse")
-        print("3. Irse")
-        print("4. Menú de Guardado")
-        option = input("Elige una opción: ")
-
-        if option == '1':
-            player.__attack(dungeon.__current_enemy)
-        elif option == '2':
-            player.__defend(dungeon.__current_enemy)
-        elif option == '3':
-            print(f"{player.__name} decidió irse.")
-            break
-        elif option == '4':
-            save_menu(player)
-        else:
-            print("Opción no válida. Inténtalo de nuevo.")
-
-def save_menu(player):
-    while True:
-        print("\n--- Menú de Guardado ---")
-        print("1. Guardar Progreso")
-        print("2. Cargar Progreso")
-        print("3. Volver al Menú Principal")
-        option = input("Elige una opción: ")
-
-        if option == '1':
-            save.__save_game(player)
-        elif option == '2':
-            save.__load_game(player)
-        elif option == '3':
-            break
-        else:
-            print("Opción no válida. Inténtalo de nuevo.")
+import dungeon
+import characters
+import item
+import constant
+import heroes
 
 def main():
-    player = Warrior("Conan", 100, 20, 10)
-    dungeon = Dungeon()  
+    print(constant.get_welcome_message())
 
-    print("¡Bienvenido al juego!")
-    game_menu(player, dungeon)
+    # Mostrar los personajes disponibles
+    print("Personajes disponibles:")
+    print("1. Guerrero")
+    print("2. Mago")
+    print("3. Arquero")
 
-if _name_ == "_main_":
+    # Pedir al jugador que elija un personaje
+    character_choice = input("¿Qué personaje deseas elegir? ")
+
+    # Crear el personaje elegido
+    if character_choice == "1":
+        player = heroes.Warrior("Guerrero", 100, 15, 5)
+    elif character_choice == "2":
+        player = heroes.Mage("Mago", 80, 10, 5)
+    elif character_choice == "3":
+        player = heroes.Archer("Arquero", 90, 12, 5)
+    else:
+        print(constant.get_invalid_option())
+        return
+
+    # Crear un objeto Dungeon
+    dungeon_game = dungeon.Dungeon(10, 10)
+
+    # Iniciar el juego
+    dungeon_game.start_game()
+
+    # Bucle principal del juego
+    while True:
+        # Mostrar el menú principal
+        print(constant.get_game_menu())
+
+        # Pedir al jugador que elija una acción
+        action = input("¿Qué deseas hacer? ")
+
+        # Procesar la acción del jugador
+        if action == "1":
+            # Atacar
+            dungeon_game.navigate("norte")
+        elif action == "2":
+            # Defenderse
+            player.set_defense(player.get_defense() + 10)
+            print(constant.get_defend_message())
+        elif action == "3":
+            # Irse
+            print(constant.get_flee_message())
+        elif action == "4":
+            # Menú de guardado
+            print(constant.get_save_menu())
+            save_action = input("¿Qué deseas hacer? ")
+            if save_action == "1":
+                # Guardar progreso
+                print(constant.get_save_success())
+            elif save_action == "2":
+                # Cargar progreso
+                print(constant.get_load_success())
+            elif save_action == "3":
+                # Volver al menú principal
+                continue
+        else:
+            print(constant.get_invalid_option())
+
+if __name__ == "__main__":
     main()
-
-

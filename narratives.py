@@ -1,25 +1,9 @@
-def show_intro_narrative():  #Narrativa de introducción al iniciar el juego
-    print("▒█▀▀█ ░▀░ █▀▀ █▀▀▄ ▀█░█▀ █▀▀ █▀▀▄ ░▀░ █▀▀▄ █▀▀█ 　 █▀▀█")
-    print("▒█▀▀▄ ▀█▀ █▀▀ █░░█ ░█▄█░ █▀▀ █░░█ ▀█▀ █░░█ █░░█ 　 █▄▄█")
-    print("▒█▄▄█ ▀▀▀ ▀▀▀ ▀░░▀ ░░▀░░ ▀▀▀ ▀░░▀ ▀▀▀ ▀▀▀░ ▀▀▀▀ 　 ▀░░▀")
-    print()
-    print("████████╗██╗░░██╗███████╗  ███████╗██╗███╗░░██╗░█████╗░██╗░░░░░")
-    print("╚══██╔══╝██║░░██║██╔════╝  ██╔════╝██║████╗░██║██╔══██╗██║░░░░░")
-    print("░░░██║░░░███████║█████╗░░  █████╗░░██║██╔██╗██║███████║██║░░░░░")
-    print("░░░██║░░░██╔══██║██╔══╝░░  ██╔══╝░░██║██║╚████║██╔══██║██║░░░░░")
-    print("░░░██║░░░██║░░██║███████╗  ██║░░░░░██║██║░╚███║██║░░██║███████╗")
-    print("░░░╚═╝░░░╚═╝░░╚═╝╚══════╝  ╚═╝░░░░░╚═╝╚═╝░░╚══╝╚═╝░░╚═╝╚══════╝")
-    print()
-    print("██████╗░██╗░░░██╗███╗░░██╗░██████╗░███████╗░█████╗░███╗░░██╗")
-    print("██╔══██╗██║░░░██║████╗░██║██╔════╝░██╔════╝██╔══██╗████╗░██║")
-    print("██║░░██║██║░░░██║██╔██╗██║██║░░██╗░█████╗░░██║░░██║██╔██╗██║")
-    print("██║░░██║██║░░░██║██║╚████║██║░░╚██╗██╔══╝░░██║░░██║██║╚████║")
-    print("██████╔╝╚██████╔╝██║░╚███║╚██████╔╝███████╗╚█████╔╝██║░╚███║")
-    print("╚═════╝░░╚═════╝░╚═╝░░╚══╝░╚═════╝░╚══════╝░╚════╝░╚═╝░░╚══╝")
-    print()
-    print("Tu misión es derrotar al malvado Dragón que amenaza con destruir el reino.")
-    print("Para lograrlo, debes atravesar varias mazmorras llenas de enemigos peligrosos.")
-    print("Buena suerte y... ¡Que comience la aventura!")
+import constant
 
-# Llamada a la función para mostrar la narrativa de introducción
-show_intro_narrative()
+def game_narrative():
+    print(constant.INTRO_NARRATIVE)
+    print(constant.CHAPTER_1_NARRATIVE)
+    print(constant.CHAPTER_2_NARRATIVE)
+    print(constant.CHAPTER_3_NARRATIVE)
+    
+game_narrative()
