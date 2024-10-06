@@ -161,23 +161,23 @@ INTRO_NARRATIVE = """
 ██████╔╝╚██████╔╝ ██║░╚███║╚██████╔╝███████╗╚█████╔╝██║░╚███║
 ╚═════╝░░╚═════╝░╚═╝░░╚══╝░╚═════╝░╚══════╝░╚════╝░╚═╝░░╚══╝
 
-Tu misión es derrotar al malvado Dragón que amenaza con destruir el reino.
+Tu misión es derrotar al Dragón que amenaza con destruir el reino.
 Para lograrlo, debes atravesar varias mazmorras llenas de enemigos peligrosos.
 Buena suerte y... ¡Que comience la aventura!
 """
 
 CHAPTER_1_NARRATIVE = """
-Capítulo 1: La Llamada a la Aventura
-El jugador comienza su aventura en el pueblo de Willowdale,
+Capítulo 1: La llamada a la Aventura
+El jugador comienza su aventura en el pueblo de Cuadro Benegas,
 donde se encuentra con un grupo de personajes que le piden ayuda
-para derrotar al Dragón Anciano.
+para derrotar al Dragón.
 El jugador puede elegir entre tres héroes diferentes:
 un guerrero, un mago y un arquero.
 """
 
 CHAPTER_2_NARRATIVE = """
 Capítulo 2: La Mazmorra del Dragón
-El jugador se dirige a la mazmorra del Dragón Anciano,
+El jugador se dirige a la mazmorra del Dragón,
 donde se enfrenta a una serie de enemigos y obstáculos.
 La mazmorra está llena de trampas y secretos,
 y el jugador debe usar su habilidad y astucia para superarlos.
@@ -185,9 +185,9 @@ y el jugador debe usar su habilidad y astucia para superarlos.
 
 CHAPTER_3_NARRATIVE = """
 Capítulo 3: La Batalla Final
-Finalmente, el jugador llega a la cámara del Dragón Anciano
+Finalmente, el jugador llega a la cámara del Dragón
 y se enfrenta a él en una batalla épica.
-El Dragón Anciano es un enemigo formidable,
+El Dragón es un enemigo formidable,
 pero el jugador puede usar todos los objetos y habilidades
 que ha recogido durante su aventura para derrotarlo.
 """

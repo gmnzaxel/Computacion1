@@ -10,10 +10,7 @@ from constant import (
     get_enemy_take_damage_message,
     get_enemy_treasure_message,
     get_dragon_fire_message,
-    get_ogre_smash_message,
     get_assassin_message,
-    get_undead_knight_message,
-    get_wizard_message,
 )
 
 class Enemy(Character):
@@ -70,7 +67,7 @@ class Assassin(AutomaticEnemy):
     def __init__(self):
         super().__init__("Assassin", 150, 40, 15)
 
-    # asesino abilidad especial
+    # asesino habilidad especial
     def special_ability(self, enemy):
         self.evasion = True
         print(get_enemy_evasion_message().format(self.get_name()))

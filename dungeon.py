@@ -2,18 +2,16 @@ from constant import (
     WELCOME_MESSAGE,
     GAME_OVER_MESSAGE,
     LEVEL_UP_MESSAGE,
-)
-from item import (
-    HealingItem,
-    DamageBoostItem,
-    ShieldItem,
-)
-from constant import (
     FIGHT_MESSAGE,
     ATTACK_MESSAGE,
     DEFEND_MESSAGE,
     FLEE_MESSAGE,
     ENEMY_DEFEATED_MESSAGE,
+)
+from item import (
+    HealingItem,
+    DamageBoostItem,
+    ShieldItem,
 )
 from characters import Character
 import random
@@ -34,7 +32,7 @@ class Dungeon:
     def __generate_level(self):
         # Genera un nivel con enemigos y objetos
         for _ in range(5):
-            enemy = Character("Enemigo", 10, 2, 1, 0.1)
+            enemy = Character("Enemigo", 10, 2, 1)  # Sin probabilidad, ya que no se utilizó
             enemy.set_position((random.randint(0, self.__width - 1), random.randint(0, self.__height - 1)))
             self.__enemies.append(enemy)
 
@@ -46,14 +44,21 @@ class Dungeon:
 
     def navigate(self, direction):
         # Mueve al jugador en la dirección especificada
-        if direction == "norte":
-            self.__player.set_position((self.__player.get_position()[0], self.__player.get_position()[1] - 1))
-        elif direction == "sur":
-            self.__player.set_position((self.__player.get_position()[0], self.__player.get_position()[1] + 1))
-        elif direction == "este":
-            self.__player.set_position((self.__player.get_position()[0] + 1, self.__player.get_position()[1]))
-        elif direction == "oeste":
-            self.__player.set_position((self.__player.get_position()[0] - 1, self.__player.get_position()[1]))
+        x, y = self.__player.get_position()
+        if direction == "norte" and y > 0:
+            y -= 1
+        elif direction == "sur" and y < self.__height - 1:
+            y += 1
+        elif direction == "este" and x < self.__width - 1:
+            x += 1
+        elif direction == "oeste" and x > 0:
+            x -= 1
+        else:
+            print("No puedes moverte en esa dirección.")
+            return
+
+        self.__player.set_position((x, y))
+        print(f"Te has movido a la posición {self.__player.get_position()}.")
 
         # Verifica si el jugador ha encontrado un enemigo o un objeto
         for enemy in self.__enemies:
@@ -101,3 +106,5 @@ class Dungeon:
 
     def game_over(self):
         print(GAME_OVER_MESSAGE)
+
+    # Métodos adicionales para el guardado y carga del juego se pueden agregar aquí
