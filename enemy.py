@@ -32,7 +32,7 @@ class AncientDragon(AutomaticEnemy):
         super().__init__("Ancient Dragon", 300, 50, 30)
         self.defeated = False
 
-    # habilidad especial
+    # habilidad especial dragon 
     def special_ability(self, enemy):
         import random
         damage = self.get_strength() * 2
@@ -116,7 +116,7 @@ class UndeadKnight(AutomaticEnemy):
         super().__init__("Undead Knight", 250, 30, 25)
         self.resurrected = False
 
-    # caballero no muerto habilidad especial
+    # caballero habilidad especial
     def special_ability(self):
         self.resurrected = True
         self.set_health(self.get_health() + 50)

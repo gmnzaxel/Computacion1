@@ -7,6 +7,8 @@ SAVE_SUCCESS = "Juego guardado exitosamente."
 LOAD_SUCCESS = "Progreso cargado exitosamente."
 SAVE_FILE_ERROR = "No se encontró ningún archivo de guardado."
 GAME_OVER_MESSAGE = "¡Juego terminado! Gracias por jugar."
+NAVIGATION_MENU = "\n--- Menú de Navegación ---\n1. Norte\n2. Sur\n3. Este\n4. Oeste\n5. Menú de Guardado"
+
 
 # Mensajes de personajes
 ATTACK_MESSAGE = "{} atacó a {} causando {} puntos de daño."
@@ -19,6 +21,9 @@ SHIELD_DECREASE_ITEM_MESSAGE = "{} ha perdido {} puntos de escudo"
 DAMAGE_ITEM_MESSAGE = "{} ha recibido {} puntos de daño"
 
 #Getters para acceder a los mensajes
+def get_navigation_menu():
+    return NAVIGATION_MENU
+
 def get_welcome_message():
     return WELCOME_MESSAGE
 
@@ -135,12 +140,45 @@ HEALING_ITEM_MESSAGE = "{} ha sido curado por {} puntos."
 DAMAGE_BOOST_ITEM_MESSAGE = "El daño de {} ha aumentado en {} puntos."
 SHIELD_ITEM_MESSAGE = "{} ha ganado {} puntos de escudo."
 
+#mensajes de combates:
+ENEMY_ENCOUNTER_MESSAGE = "Te encontraste con un enemigo."
+COMBAT_MENU = "\n--- Menú de Combate ---\n1. Atacar\n2. Defenderse\n3. Huir"
+INVALID_COMBAT_OPTION = "Opción de combate no válida. Inténtalo de nuevo."
+PLAYER_ATTACK_MESSAGE = "{} atacó a {} causando {} puntos de daño."
+ENEMY_ATTACK_MESSAGE = "{} atacó a {} causando {} puntos de daño."
+PLAYER_DEFEND_MESSAGE = "{} se defiende."
+ENEMY_DEFEND_MESSAGE = "{} se defiende."
+PLAYER_FLEE_MESSAGE = "{} huye del combate."
+ENEMY_FLEE_MESSAGE = "{} huye del combate."
+PLAYER_DEFEAT_MESSAGE = "{} derrotó a {}."
+ENEMY_DEFEAT_MESSAGE = "{} derrotó a {}." 
+GAIN_EXPERIENCE_MESSAGE = "{} ganó {} puntos de experiencia."
+LEVEL_UP_MESSAGE = "{} subió al nivel {}."
+
 #mensajes de las dungeon
-FIGHT_MESSAGE = "¡Lucha!"
+ENEMY_MESSAGE = "Te encontraste con un enemigo."
 ATTACK_MESSAGE = "Has atacado a {} por {} puntos de daño."
 DEFEND_MESSAGE = "Te has defendido."
 FLEE_MESSAGE = "Has huido de la lucha."
 ENEMY_DEFEATED_MESSAGE = "Has derrotado a {}!"
+ITEM_FOUND_MESSAGE = "¡Has encontrado un objeto!"
+HANDLE_ITEM_MESSAGE = "¿Qué deseas hacer con el objeto?"
+PICK_UP_ITEM_MESSAGE = "Has agarrado el objeto."
+DISCARD_ITEM_MESSAGE = "Has deshechado el objeto."
+WRONG_DIRECTION = "No podes moverte en esa dirección porque está bloqueado el mapa."
+
+def get_item_found_message():
+    return ITEM_FOUND_MESSAGE
+
+def get_handle_item_message():
+    return HANDLE_ITEM_MESSAGE
+
+def get_pick_up_item_message():
+    return PICK_UP_ITEM_MESSAGE
+
+def get_discard_item_message():
+    return DISCARD_ITEM_MESSAGE
+
 
 INTRO_NARRATIVE = """
 ▒█▀▀█ ░▀░ █▀▀ █▀▀▄ ▀█░█▀ █▀▀ █▀▀▄ ░▀░ █▀▀▄ █▀▀█ 　 █▀▀█
