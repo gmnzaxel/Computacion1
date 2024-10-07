@@ -65,36 +65,36 @@ class Dungeon:
             item.set_position((random.randint(0, self.__width - 1), random.randint(0, self.__height - 1)))
             self.__items.append(item)
 
-def navigate(self, direction):
-    # Mueve al jugador en la dirección especificada
-    x, y = self.__player.get_position()
-    if direction == "norte" and y > 0:
-        y -= 1
-    elif direction == "sur" and y < self.__height - 1:
-        y += 1
-    elif direction == "este" and x < self.__width - 1:
-        x += 1
-    elif direction == "oeste" and x > 0:
-        x -= 1
-    else:
-        print(WRONG_DIRECTION)
-        return
+    def navigate(self, direction):
+        # Mueve al jugador en la dirección especificada
+        x, y = self.__player.get_position()
+        if direction == "norte" and y > 0:
+            y -= 1
+        elif direction == "sur" and y < self.__height - 1:
+            y += 1
+        elif direction == "este" and x < self.__width - 1:
+            x += 1
+        elif direction == "oeste" and x > 0:
+            x -= 1
+        else:
+            print(WRONG_DIRECTION)
+            return
 
-    self.__player.set_position((x, y))
-    print(f"Te moviste a la posición {self.__player.get_position()}.")
+        self.__player.set_position((x, y))
+        print(f"Te moviste a la posición {self.__player.get_position()}.")
 
-    # Verifica si el jugador ha encontrado un enemigo o un objeto
-    for enemy in self.__enemies:
-        if enemy.get_position() == self.__player.get_position():
-            print(ENEMY_MESSAGE)
-            self.__combat(enemy)
-            break
+        # Verifica si el jugador ha encontrado un enemigo o un objeto
+        for enemy in self.__enemies:
+            if enemy.get_position() == self.__player.get_position():
+                print(ENEMY_MESSAGE)
+                self.__combat(enemy)
+                break
 
-    for item in self.__items:
-        if item.get_position() == self.__player.get_position():
-            print(get_item_found_message())
-            self.__handle_item(item)
-            break
+        for item in self.__items:
+            if item.get_position() == self.__player.get_position():
+                print(get_item_found_message())
+                self.__handle_item(item)
+                break
 
     def __combat(self, enemy):
         while enemy.get_health() > 0 and self.__player.get_health() > 0:
