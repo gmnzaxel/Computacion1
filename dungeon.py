@@ -41,6 +41,7 @@ class Dungeon:
         self.__items = []
         self._current_level = 1
         self._enemy_found = False
+        self.__visited_positions = set()
 
     def get_enemy_found(self):
         return self._enemy_found
@@ -80,8 +81,11 @@ class Dungeon:
             print(WRONG_DIRECTION)
             return
 
+
         self.__player.set_position((x, y))
         print(f"Te moviste a la posición {self.__player.get_position()}.")
+        self.__visited_positions.add((x, y))
+        self.__print_map()
 
         # Verifica si el jugador ha encontrado un enemigo o un objeto
         for enemy in self.__enemies:
@@ -137,6 +141,25 @@ class Dungeon:
                 self.__level_up()
         elif self.__player.get_health() <= 0:
             print(ENEMY_DEFEAT_MESSAGE.format(enemy.get_name(), self.__player.get_name()))
+
+    # mapa del juego
+    def __print_map(self): # mapa
+        print("  +" + "---+" * self.__width)
+        for y in range(self.__height):
+            divisor = "|"
+            for x in range(self.__width):
+                if (x, y) == self.__player.get_position():
+                    divisor += " P |"
+                elif (x, y) in self.__visited_positions:
+                    divisor += " / |"
+                elif (x, y) in [enemy.get_position() for enemy in self.__enemies]:
+                    divisor += " E |"
+                elif (x, y) in [item.get_position() for item in self.__items]:
+                    divisor += " I |"
+                else:
+                    divisor += " * |"
+            print(divisor)
+            print("  +" + "---+" * self.__width)
 
     def __level_up(self):
         self.__player.set_level(self.__player.get_level() + 1)

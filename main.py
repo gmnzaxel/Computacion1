@@ -7,7 +7,7 @@ import save
 
 
 def main():
-    print(constant.get_welcome_message())
+    print(constant.INTRO_NARRATIVE)
 
     # Mostrar los personajes disponibles
     print("Personajes disponibles:")
@@ -30,7 +30,7 @@ def main():
         return
 
     # Crear un objeto Dungeon
-    dungeon_game = dungeon.Dungeon(10, 10)
+    dungeon_game = dungeon.Dungeon(5, 5)
 
     # Iniciar el juego
     dungeon_game.start_game()
@@ -49,6 +49,8 @@ def main():
             dungeon_game.navigate("oeste")
         elif action == "5":
             save_action = input("¿Qué deseas hacer? ")
+            print("1. Guardar progreso")
+            print("2. Cargar progreso")
             if save_action == "1":
                 save.save_game(player, dungeon_game)  # Guardar progreso
                 print(constant.get_save_success())
