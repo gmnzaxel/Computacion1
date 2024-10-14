@@ -33,6 +33,8 @@ from item import (
 from characters import Character
 import random
 
+from enemy import *
+
 class Dungeon:
     def __init__(self, width, height):
         self.__width = width
@@ -126,12 +128,7 @@ class Dungeon:
 
             # Turno del enemigo
             if enemy.get_health() > 0:
-                damage = enemy.get_strength() - self.__player.get_defense()
-                if damage > 0:
-                    self.__player.set_health(self.__player.get_health() - damage)
-                    print(ENEMY_ATTACK_MESSAGE.format(enemy.get_name(), self.__player.get_name(), damage))
-                else:
-                    print(ENEMY_DEFEND_MESSAGE.format(enemy.get_name()))
+                enemy.attack(self.__player)
 
         # Verificar quién ganó el combate
         if enemy.get_health() <= 0:
