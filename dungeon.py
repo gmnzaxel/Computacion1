@@ -22,6 +22,7 @@ from constant import (
     get_discard_item_message,
     WRONG_DIRECTION,
     ENEMY_MESSAGE,
+    INVALID_OPTION,
     
 )
 from item import (
@@ -169,18 +170,19 @@ class Dungeon:
         self.__player.set_strength(self.__player.get_strength() + 3)
         self.__player.set_defense(self.__player.get_defense() + 2)
 
-
+ # Manipular objeto
     def __handle_item(self, item):
-        # Manipular objeto
-        print(get_handle_item_message())
-        action = input("(agarrar, deshechar) ")
-        if action == "agarrar":
-            item.apply(self.__player)
-            self.__items.remove(item)
-            print(get_pick_up_item_message())
-        elif action == "deshechar":
-            print(get_discard_item_message())
-            self.__items.remove(item)
-
-    def game_over(self):
-        print(GAME_OVER_MESSAGE)
+        while True:
+            print(get_handle_item_message())
+            action = input("(1) agarrar,\n(2) deshechar ")
+            if action == "1":
+                item.apply(self.__player)
+                self.__items.remove(item)
+                print(get_pick_up_item_message())
+                break
+            elif action == "2":
+                print(get_discard_item_message())
+                self.__items.remove(item)
+                break
+            else: 
+                print(INVALID_OPTION)

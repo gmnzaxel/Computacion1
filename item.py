@@ -55,15 +55,6 @@ class ShieldItem(Item):
         target.set_defense(target.get_defense() + self.__shield_amount)
         print(SHIELD_ITEM_MESSAGE.format(target.get_name(), self.__shield_amount))
 
-# muerte instantánea 
-# class DeathItem(Item):
-#     def __init__(self, name):
-#         super().__init__(name, "Causa muerte instantánea")
-
-#     def apply(self, target):
-#         target.health = 0
-#         print(f"{target.name} ha sido eliminado instantáneamente.")
-
 # disminue  fuerza 
 class StrengthDecreaseItem(Item):
     def __init__(self, name, strength_decrease):
