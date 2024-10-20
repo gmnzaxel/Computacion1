@@ -34,9 +34,9 @@ class AncientDragon(AutomaticEnemy):
     # habilidad especial dragon 
     def special_ability(self, enemy):
         import random
-        damage = self.get_strength() * 2
+        damage = self.get_strength() * random.uniform(1.0, 2.0) # uniform: num flotante
         enemy.take_damage(damage)
-        print(get_dragon_fire_message().format(damage, enemy.get_name(), self.get_name()))
+        print(get_dragon_fire_message().format(self.get_name, damage, enemy.get_name()))
         
 
     # dragón antiguo recibe daño
