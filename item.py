@@ -5,7 +5,15 @@ from constant import (
     STRENGTH_DECREASE_ITEM_MESSAGE,
     DEFENSE_DECREASE_ITEM_MESSAGE,
     SHIELD_DECREASE_ITEM_MESSAGE,
-    DAMAGE_ITEM_MESSAGE
+    DAMAGE_ITEM_MESSAGE,
+    HEALING_ITEM_DESCRIPTION,
+    DAMAGE_BOOST_ITEM_DESCRIPTION,
+    SHIELD_ITEM_DESCRIPTION,
+    STRENGTH_DECREASE_ITEM_DESCRIPTION,
+    DEFENSE_DECREASE_ITEM_DESCRIPTION,
+    SHIELD_DECREASE_ITEM_DESCRIPTION,
+    DAMAGE_ITEM_DESCRIPTION
+
 )
 
 class Item:
@@ -26,7 +34,7 @@ class Item:
 # curan
 class HealingItem(Item):
     def __init__(self, name, healing_amount):
-        super().__init__(name, f"Cura {healing_amount} puntos de vida")
+        super().__init__(name, HEALING_ITEM_DESCRIPTION.format(healing_amount))
         self.__healing_amount = healing_amount
 
     def apply(self, target):
@@ -38,7 +46,7 @@ class HealingItem(Item):
 # aumenta daño 
 class DamageBoostItem(Item):
     def __init__(self, name, damage_increase):
-        super().__init__(name, f"Aumenta el daño en {damage_increase} puntos")
+        super().__init__(name, DAMAGE_BOOST_ITEM_DESCRIPTION.format(damage_increase))
         self.__damage_increase = damage_increase
 
     def apply(self, target):
@@ -48,7 +56,7 @@ class DamageBoostItem(Item):
 # añade escudo 
 class ShieldItem(Item):
     def __init__(self, name, shield_amount):
-        super().__init__(name, f"Añade {shield_amount} puntos de escudo")
+        super().__init__(name, SHIELD_ITEM_DESCRIPTION.format(shield_amount))
         self.__shield_amount = shield_amount
 
     def apply(self, target):
@@ -58,7 +66,7 @@ class ShieldItem(Item):
 # disminue  fuerza 
 class StrengthDecreaseItem(Item):
     def __init__(self, name, strength_decrease):
-        super().__init__(name, f"Disminuye la fuerza en {strength_decrease} puntos")
+        super().__init__(name, STRENGTH_DECREASE_ITEM_DESCRIPTION.format(strength_decrease))
         self.__strength_decrease = strength_decrease
 
     def apply(self, target):
@@ -68,7 +76,7 @@ class StrengthDecreaseItem(Item):
 # disminue defensa 
 class DefenseDecreaseItem(Item):
     def __init__(self, name, defense_decrease):
-        super().__init__(name, f"Disminuye la defensa en {defense_decrease} puntos")
+        super().__init__(name, DEFENSE_DECREASE_ITEM_DESCRIPTION.format(defense_decrease))
         self.__defense_decrease = defense_decrease
 
     def apply(self, target):
@@ -78,7 +86,7 @@ class DefenseDecreaseItem(Item):
 # disminue escudo 
 class ShieldDecreaseItem(Item):
     def __init__(self, name, shield_decrease):
-        super().__init__(name, f"Disminuye el escudo en {shield_decrease} puntos")
+        super().__init__(name, SHIELD_DECREASE_ITEM_DESCRIPTION.format(shield_decrease))
         self.__shield_decrease = shield_decrease
 
     def apply(self, target):
@@ -88,7 +96,7 @@ class ShieldDecreaseItem(Item):
 # daño al personaje
 class DamageItem(Item):
     def __init__(self, name, damage_amount):
-        super().__init__(name, f"Causa {damage_amount} puntos de daño")
+        super().__init__(name, DAMAGE_ITEM_DESCRIPTION.format(damage_amount))
         self.__damage_amount = damage_amount
 
     def apply(self, target):

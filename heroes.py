@@ -1,8 +1,20 @@
 from characters import Character
-from constant import (get_attack_message)
+from constant import (
+    get_attack_message,
+    PLAYER_TAKE_DAMAGE_MESSAGE,
+    PLAYER_DEFEATED_MESSAGE,
+    
+    )
+
+class Player(Character):
+    def take_damage(self, damage):
+        self.set_health(self.get_health() - damage)
+        print(PLAYER_TAKE_DAMAGE_MESSAGE.format(self.get_name(), damage, self.get_health()))
+        if self.get_health() <= 0:
+            print(PLAYER_DEFEATED_MESSAGE.format(self.get_name()))
 
 class Hero(Character):
-    def __init__(self, name, health, strength, defense, level=1, experience=0):
+    def __init__(self, name, health, strength, defense, level=1, experience=0):             
         super().__init__(name, health, strength, defense, level, experience)
 
 class Archer(Hero):

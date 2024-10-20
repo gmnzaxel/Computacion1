@@ -3,9 +3,8 @@ from constant import (
     get_enemy_attack_message,
     get_enemy_defeated_message,
     get_enemy_resurrected_message,
-    get_enemy_bleed_effect_message,
     get_enemy_evasion_message,
-    get_enemy_angry_message,
+    get_enemy_angry_message,    
     get_enemy_magic_shield_message,
     get_enemy_take_damage_message,
     get_enemy_treasure_message,
@@ -29,20 +28,16 @@ class AutomaticEnemy(Enemy):
 
 class AncientDragon(AutomaticEnemy):
     def __init__(self):
-        super().__init__("Ancient Dragon", 300, 50, 30)
+        super().__init__("Ancient Dragon", 200, 40, 20)
         self.defeated = False
 
     # habilidad especial dragon 
     def special_ability(self, enemy):
         import random
         damage = self.get_strength() * 2
-        bleed_chance = 0.3  # 30% de probabilidad de causar sangrado
         enemy.take_damage(damage)
-        print(get_dragon_fire_message().format(self.get_name(), enemy.get_name(), damage))
+        print(get_dragon_fire_message().format(damage, enemy.get_name(), self.get_name()))
         
-        if random.random() < bleed_chance:
-            enemy.apply_bleed_effect()
-            print(get_enemy_bleed_effect_message().format(self.get_name()))
 
     # dragón antiguo recibe daño
     def take_damage(self, damage):
@@ -59,13 +54,9 @@ class AncientDragon(AutomaticEnemy):
     def award_treasure(self):
         print(get_enemy_treasure_message())
 
-    # dragón antiguo efecto de sangrado
-    def apply_bleed_effect(self):
-        pass
-
 class Assassin(AutomaticEnemy):
     def __init__(self):
-        super().__init__("Assassin", 150, 40, 15)
+        super().__init__("Assassin", 100, 25, 15)
 
     # asesino habilidad especial
     def special_ability(self, enemy):
@@ -88,7 +79,7 @@ class Assassin(AutomaticEnemy):
 
 class Ogre(AutomaticEnemy):
     def __init__(self):
-        super().__init__("Ogre", 200, 35, 20)
+        super().__init__("Ogre", 200, 15, 20)
         self.angry = False
 
     # ogro habilidad especial
@@ -113,7 +104,7 @@ class Ogre(AutomaticEnemy):
 
 class UndeadKnight(AutomaticEnemy):
     def __init__(self):
-        super().__init__("Undead Knight", 250, 30, 25)
+        super().__init__("Undead Knight", 150, 20, 25)
         self.resurrected = False
 
     # caballero habilidad especial
@@ -139,7 +130,7 @@ class UndeadKnight(AutomaticEnemy):
 
 class Wizard(AutomaticEnemy):
     def __init__(self):
-        super().__init__("Wizard", 180, 40, 15)
+        super().__init__("Wizard", 80, 30, 15)
         self.magic_shield = False
 
     # mago habilidad especial
