@@ -218,30 +218,30 @@ class Dungeon:
                         break  # Salir del combate
 
                     # Turno del enemigo
-                    if enemy.get_health() > 0 and action != "3":
-                        damage = max(0, enemy.get_strength() - self.__player.get_defense() + random.randint(-5, 5))
-                        self.__player.set_health(self.__player.get_health() - damage)
-                        print(ENEMY_ATTACK_MESSAGE.format(enemy.get_name(), self.__player.get_name(), damage))
-                        print(CURRENT_HEALTH_MESSAGE.format(self.__player.get_name(), self.__player.get_health()))
-                        print(CURRENT_HEALTH_MESSAGE.format(enemy.get_name(), enemy.get_health()))
+                if enemy.get_health() > 0 and action != "3":
+                    damage = max(0, enemy.get_strength() - self.__player.get_defense() + random.randint(-5, 5))
+                    self.__player.set_health(self.__player.get_health() - damage)
+                    print(ENEMY_ATTACK_MESSAGE.format(enemy.get_name(), self.__player.get_name(), damage))
+                    print(CURRENT_HEALTH_MESSAGE.format(self.__player.get_name(), self.__player.get_health()))
+                    print(CURRENT_HEALTH_MESSAGE.format(enemy.get_name(), enemy.get_health()))
 
-                    # Verificar si el jugador ha sido derrotado
-                    if self.__player.get_health() <= 0:
-                        print(ENEMY_DEFEAT_MESSAGE.format(enemy.get_name(), self.__player.get_name()))
-                        print(GAME_OVER_MESSAGE)
-                        exit()
-                        return False  # juego terminado
+                # Verificar si el jugador ha sido derrotado
+                if self.__player.get_health() <= 0:
+                    print(ENEMY_DEFEAT_MESSAGE.format(enemy.get_name(), self.__player.get_name()))
+                    print(GAME_OVER_MESSAGE)
+                    exit()
+                    return False  # juego terminado
 
-                    # Verificar quién gano el combate
-                    if enemy.get_health() <= 0:
-                        print(PLAYER_DEFEAT_MESSAGE.format(self.__player.get_name(), enemy.get_name()))
-                        self.__player.set_experience(self.__player.get_experience() + 100)
-                        print(GAIN_EXPERIENCE_MESSAGE.format(self.__player.get_name(), 100))
-                        self.__player.set_health(self.__player.get_health() + 20)
-                        print(HEALTH_GAIN_MESSAGE.format(self.__player.get_name(), 20))
-                        print(CURRENT_HEALTH_MESSAGE.format(self.__player.get_name(), self.__player.get_health()))
-                        if self.__player.get_experience() >= 1000:
-                            self.__level_up()
+                # Verificar quién gano el combate
+                if enemy.get_health() <= 0:
+                    print(PLAYER_DEFEAT_MESSAGE.format(self.__player.get_name(), enemy.get_name()))
+                    self.__player.set_experience(self.__player.get_experience() + 100)
+                    print(GAIN_EXPERIENCE_MESSAGE.format(self.__player.get_name(), 100))
+                    self.__player.set_health(self.__player.get_health() + 20)
+                    print(HEALTH_GAIN_MESSAGE.format(self.__player.get_name(), 20))
+                    print(CURRENT_HEALTH_MESSAGE.format(self.__player.get_name(), self.__player.get_health()))
+                    if self.__player.get_experience() >= 200:
+                        self.__level_up()
                     elif self.__player.get_health() <= 0:
                         print(ENEMY_DEFEAT_MESSAGE.format(enemy.get_name(), self.__player.get_name()))
                     
