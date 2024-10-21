@@ -26,7 +26,6 @@ def main():
                 else:
                     print(constant.get_invalid_option())
 
-            # Crear el personaje elegido
             if character_choice == "1":
                 player = heroes.Warrior("Guerrero", 160, 50, 20) # Vida, ataque, defensa
             elif character_choice == "2":
@@ -38,7 +37,7 @@ def main():
             dungeon_game = dungeon.Dungeon(5, 5, player)
             dungeon_game.start_game()
 
-            break  # Salimos del bucle después de iniciar una nueva partida
+            break  # Salir del bucle después de iniciar una nueva partida
 
         elif choice == 'c':
             # Cargar juego existente
@@ -53,7 +52,7 @@ def main():
             except json.JSONDecodeError:
                 print(constant.FILE_ERROR)
                 continue  # Volver a preguntar si hay un error en la carga
-            break  # Salimos del bucle después de cargar la partida
+            break  # Salir del bucle después de cargar la partida
 
         else:
             print(constant.CHARGE_INVALID_OPTION)
@@ -84,6 +83,7 @@ def main():
                 continue
             else:
                 print(constant.get_invalid_option())
+
         elif action == "ASPIRINE": # Truco aumentar vida
             player.set_health(player.get_health() + 150)
             print(constant.TRICK_HEALTH_INCREASE.format(player.get_health()))

@@ -97,7 +97,6 @@ class Dungeon:
 
 
     def check_for_boss(self):
-  
         #! Si todos los enemigos han sido derrotados, se genera el jefe final
         if len(self.__defeated_enemies) == len(self.__enemies):
             print(CHECK_BOSS)
@@ -146,8 +145,8 @@ class Dungeon:
                 self.__handle_item(item)
                 break
 
-    def attempt_flee(self):
-        if random.randint(1, 10) <= 3:  # 30% de probabilidad de escape
+    def attempt_flee(self): # 30% de probabilidad de escape
+        if random.randint(1, 10) <= 3:  
                 print(PLAYER_FLEE_MESSAGE.format(self.__player.get_name()))
                 return True
         else:
@@ -201,13 +200,13 @@ class Dungeon:
                 print(WIN_GAME_OVER)
                 exit()
         else:
-            # Lógica de combate normal para otros enemigos
+            # combate para otros enemigos
             while enemy.get_health() > 0 and self.__player.get_health() > 0:
                 print(COMBAT_MENU)
                 action = input(ASK_ACTIONS)
 
                 # Bucle para manejar opciones inválidas
-                while action not in ["1", "2", "3"]:  # Asegúrate de que la opción sea válida
+                while action not in ["1", "2", "3"]: 
                     print(INVALID_COMBAT_OPTION)
                     action = input(ASK_ACTIONS)  # Vuelve a pedir la acción
 
@@ -264,7 +263,7 @@ class Dungeon:
                         print(ENEMY_DEFEAT_MESSAGE.format(enemy.get_name(), self.__player.get_name()))
                     
     # mapa del juego
-    def __print_map(self): # mapa
+    def __print_map(self): 
         print("  +" + "---+" * self.__width)
         for y in range(self.__height):
             divisor = "|"

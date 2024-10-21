@@ -17,18 +17,18 @@ class Enemy(Character):
 
     def attack(self, player):
         damage = self.get_attack() - player.get_defense()
-        damage = max(damage, 0)  # Asegúrate de que el daño no sea negativo
+        damage = max(damage, 0) 
         player.take_damage(damage)
         print(get_enemy_attack_message().format(self.get_name(), player.get_name(), damage))
 
-class AutomaticEnemy(Enemy):
+class AutomaticEnemy(Enemy): #! Ataque de enemigos 
     def __init__(self, name, health, attack, defense):
         super().__init__(name, health, attack, defense)
 
     def act(self, player):
         self.attack(player)
 
-class AncientDragon(AutomaticEnemy):
+class AncientDragon(AutomaticEnemy): #!Final boss
     def __init__(self):
         super().__init__("Ancient Dragon", 200, 75, 20)
 

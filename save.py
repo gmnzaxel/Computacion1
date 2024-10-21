@@ -3,7 +3,7 @@ import heroes
 import dungeon
 
 def save_game(player, dungeon):
-    # Crear un diccionario con los datos que queremos guardar
+    # diccionario con los datos que queremos guardar
     data = {
         "player": {
             "name": player.get_name(),
@@ -20,8 +20,7 @@ def save_game(player, dungeon):
             "items": list(dungeon.get_collected_items())  # Convertir a lista
         }
     }
-
-    # Guardar los datos en un archivo JSON
+        #Datos guardados en JSON
     with open("save_file.json", "w") as save_file:
         json.dump(data, save_file)
 
