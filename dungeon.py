@@ -54,6 +54,24 @@ class Dungeon:
         self._enemy_found = False
         self.__visited_positions = set()
 
+    def get_visited_positions(self):
+        return self.__visited_positions
+
+    def set_visited_positions(self, positions):
+        self.__visited_positions = set(positions)
+
+    def get_defeated_enemies(self):
+        return self.__defeated_enemies
+
+    def set_defeated_enemies(self, enemies):
+        self.__defeated_enemies = set(enemies)
+
+    def get_collected_items(self):
+        return self.__collected_items
+
+    def set_collected_items(self, items):
+        self.__collected_items = set(items)
+
     def get_enemy_found(self):
         return self._enemy_found
 
@@ -79,9 +97,7 @@ class Dungeon:
 
 
     def check_for_boss(self):
-        #todo if len(self.__collected_items) == len(self.__items) and len(self.__defeated_enemies) == len(self.__enemies):
-        #todo     print(CHECK_BOSS)
-        
+  
         #! Si todos los enemigos han sido derrotados, se genera el jefe final
         if len(self.__defeated_enemies) == len(self.__enemies):
             print(CHECK_BOSS)
@@ -159,6 +175,8 @@ class Dungeon:
                     if damage > 0:
                         enemy.set_health(enemy.get_health() - damage)
                         print(PLAYER_ATTACK_MESSAGE.format(self.__player.get_name(), enemy.get_name(), damage))
+                        # Imprimir la salud restante del dragón
+                        print(f"Salud restante del {enemy.get_name()}: {enemy.get_health()}")
                     else:
                         print(PLAYER_DEFEND_MESSAGE.format(self.__player.get_name()))
                 elif action == "2":
@@ -255,10 +273,10 @@ class Dungeon:
                     divisor += " P |"
                 elif (x, y) in self.__visited_positions:
                     divisor += " / |"
-                # elif (x, y) in [enemy.get_position() for enemy in self.__enemies]:
-                #     divisor += " E |"
-                # elif ( x, y) in [item.get_position() for item in self.__items]:
-                #     divisor += " O |"
+                elif (x, y) in [enemy.get_position() for enemy in self.__enemies]:
+                    divisor += " E |"
+                elif ( x, y) in [item.get_position() for item in self.__items]:
+                    divisor += " O |"
                 else:
                     divisor += "   |"
             print(divisor)

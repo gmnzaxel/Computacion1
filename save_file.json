@@ -1,0 +1,1 @@
+{"player": {"name": "Guerrero", "health": 160, "strength": 50, "defense": 30, "level": 1, "experience": 0, "position": [2, 1]}, "dungeon": {"visited_positions": [[0, 1], [2, 1], [0, 0], [1, 1], [1, 0]], "enemies": [], "items": []}}

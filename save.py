@@ -1,43 +1,63 @@
-import main
+import json
 import heroes
 import dungeon
-import json
 
-def save_game(player, dungeon_game):
+def save_game(player, dungeon):
+    # Crear un diccionario con los datos que queremos guardar
     data = {
         "player": {
             "name": player.get_name(),
             "health": player.get_health(),
+            "strength": player.get_strength(),
             "defense": player.get_defense(),
-            # Otros atributos del jugador
+            "level": player.get_level(),
+            "experience": player.get_experience(),
+            "position": player.get_position()
         },
         "dungeon": {
-            "position": dungeon_game.get_current_position(),
-            # Otros atributos del dungeon
+            "visited_positions": list(dungeon.get_visited_positions()),  # Convertir a lista
+            "enemies": list(dungeon.get_defeated_enemies()),  # Convertir a lista
+            "items": list(dungeon.get_collected_items())  # Convertir a lista
         }
     }
-    with open('save_file.json', 'w') as save_file:
+
+    # Guardar los datos en un archivo JSON
+    with open("save_file.json", "w") as save_file:
         json.dump(data, save_file)
 
-
 def load_game():
-    with open('save_file.json', 'r') as save_file:
+    # Cargar los datos del archivo JSON
+    with open("save_file.json", "r") as save_file:
         data = json.load(save_file)
     return data
 
-
 def restore_player(player_data):
-    # recrear jugador
+    player = None
     if player_data["name"] == "Guerrero":
-        return heroes.Warrior(player_data["name"], player_data["health"], 15, player_data["defense"])
+        player = heroes.Warrior(player_data["name"], player_data["health"], player_data["strength"], player_data["defense"])
     elif player_data["name"] == "Mago":
-        return heroes.Mage(player_data["name"], player_data["health"], 10, player_data["defense"])
+        player = heroes.Mage(player_data["name"], player_data["health"], player_data["strength"], player_data["defense"])
     elif player_data["name"] == "Arquero":
-        return heroes.Archer(player_data["name"], player_data["health"], 12, player_data["defense"])
+        player = heroes.Archer(player_data["name"], player_data["health"], player_data["strength"], player_data["defense"])
 
+    player.set_level(player_data["level"])
+    player.set_experience(player_data["experience"])
+    player.set_position(tuple(player_data["position"]))
+    return player
 
-def restore_dungeon(dungeon_data):
-    # restaurar la mazmorra con datos cargados
-    dungeon_game = dungeon.Dungeon(10, 10)
-    dungeon_game.set_position(dungeon_data["position"]) 
-    return dungeon_game
+def restore_dungeon(dungeon_data, player):
+    dungeon_instance = dungeon.Dungeon(5, 5, player)
+
+    visited_positions = {tuple(pos) for pos in dungeon_data["visited_positions"]}
+    dungeon_instance.set_visited_positions(visited_positions)
+
+    defeated_enemies = set(dungeon_data["enemies"])
+    collected_items = set(dungeon_data["items"])
+
+    dungeon_instance.set_defeated_enemies(defeated_enemies)
+    dungeon_instance.set_collected_items(collected_items)
+
+    # Llama a generate_level para generar enemigos y objetos
+    dungeon_instance.generate_level()
+
+    return dungeon_instance

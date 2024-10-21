@@ -2,7 +2,7 @@
 WELCOME_MESSAGE = "¡Bienvenido al juego!"
 GAME_MENU = "\n--- Menú Principal ---\n1. Atacar\n2. Defenderse\n3. Irse\n4. Menú de Guardado"
 OBJECT_MENU = "\n--- Menú del Objeto ---\n1. Agarrar\n2. Deshechar"
-SAVE_MENU = "\n--- Menú de Guardado ---\n1. Guardar Progreso\n2. Cargar Progreso\n3. Volver al Menú Principal"
+SAVE_MENU = "\n--- Menú de Guardado ---\n1. Guardar Progreso\n2. Volver al Juego"
 INVALID_OPTION = "Opción no válida. Inténtalo de nuevo."
 SAVE_SUCCESS = "Juego guardado exitosamente."
 LOAD_SUCCESS = "Progreso cargado exitosamente."
@@ -36,7 +36,9 @@ COMBAT_MENU_DRAGON = "\n--- Menú de Combate ---\n1. Atacar\n2. Defenderse"
 CHECK_BOSS = "¡Has recogido todos los ítems y derrotado a todos los enemigos! ¡Es hora de enfrentar al jefe final!"
 CANT_SCAPE = "¡No pudiste escapar! El enemigo te atacó"
 ASK_CHARACTER = "¿Qué personaje deseas elegir? (1-3): "
-
+NEW_OR_CHARGE = "¿Quieres iniciar una nueva partida (N) o cargar una partida existente (C)? "
+FILE_ERROR = "Error al cargar el archivo de guardado. El archivo puede estar corrupto."
+CHARGE_INVALID_OPTION = "Opción no válida. Por favor, elige 'N' para nueva partida o 'C' para cargar."
 
 # Mensajes de personajes
 ATTACK_MESSAGE = "{} atacó a {} causando {} puntos de daño."
@@ -54,7 +56,6 @@ PLAYER_TAKE_DAMAGE_MESSAGE = "{} recibe {} puntos de daño! Salud restante: {}"
 PLAYER_DEFEATED_MESSAGE = "{} ha sido derrotado!"
 
 # Mensajes de poderes especiales
-DRAGON_FIRE_MESSAGE = "{} lanzo una llamarada ardiente hacia {} causando {} puntos de daño."
 OGRE_SMASH_MESSAGE = "{} realizo un golpe devastador a {} causando {} puntos de daño."
 
 # Mensajes enemigos
@@ -69,7 +70,6 @@ ENEMY_TREASURE_MESSAGE = "{} ha dejado un tesoro."
 FOUND_DRAGON = "¡Has encontrado al jefe final, el AncientDragon!"
 
 # Mensajes específicos de algunos enemigos
-DRAGON_FIRE_MESSAGE = "El dragón {} lanza un rayo de fuego que causa {} de daño a {}."
 OGRE_SMASH_MESSAGE = "El ogro {} golpea con fuerza y causa {} de daño a {}."
 ASSASSIN_MESSAGE = "El asesino {} ataca con sigilo y causa {} de daño a {}."
 UNDEAD_KNIGHT_MESSAGE = "El caballero no muerto {} ataca con su espada y causa {} de daño a {}."
@@ -88,6 +88,8 @@ DEFENSE_DECREASE_ITEM_DESCRIPTION = "Disminuye la defensa en {} puntos"
 SHIELD_DECREASE_ITEM_DESCRIPTION = "Disminuye el escudo en {} puntos"
 DAMAGE_ITEM_DESCRIPTION = "Causa {} puntos de daño"
 
+#mensajes de trucos:
+TRICK_HEALTH_INCREASE = "Utilizaste un truco:\nTu salud ha aumentado en 100 puntos. Salud actual: {}."
 
 #mensajes de combates:
 CURRENT_HEALTH_MESSAGE = "{} tiene {} puntos de vida"
@@ -155,9 +157,6 @@ def get_defend_message():
 
 def get_flee_message():
     return FLEE_MESSAGE
-
-def get_dragon_fire_message():
-    return DRAGON_FIRE_MESSAGE
 
 def get_ogre_smash_message():
     return OGRE_SMASH_MESSAGE
