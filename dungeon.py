@@ -274,9 +274,9 @@ class Dungeon:
                 elif (x, y) in self.__visited_positions:
                     divisor += " / |"
                 elif (x, y) in [enemy.get_position() for enemy in self.__enemies]:
-                    divisor += " E |"
+                    divisor += "   |"
                 elif ( x, y) in [item.get_position() for item in self.__items]:
-                    divisor += " O |"
+                    divisor += "   |"
                 else:
                     divisor += "   |"
             print(divisor)

@@ -80,16 +80,6 @@ def main():
             if save_action == "1":  # Guardar juego
                 save.save_game(player, dungeon_game)
                 print(constant.get_save_success())
-            # elif save_action == "2":  # Cargar juego
-            #     try:
-            #         data = save.load_game()
-            #         player = save.restore_player(data["player"])
-            #         dungeon_game = save.restore_dungeon(data["dungeon"], player)
-            #         print(constant.get_load_success())
-            #     except FileNotFoundError:
-            #         print(constant.get_save_file_error())
-            #     except json.JSONDecodeError:
-            #         print(constant.FILE_ERROR)
             elif save_action == "2":  # Cancelar
                 continue
             else:
